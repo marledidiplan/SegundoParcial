@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Parcial2
+namespace Parcial2.UI.Registro
 {
-    public partial class Form1 : Form
+    public partial class Registro : Form
     {
-        public Form1()
+        public Registro()
         {
             InitializeComponent();
         }
