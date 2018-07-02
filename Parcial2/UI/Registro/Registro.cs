@@ -15,5 +15,10 @@ namespace Parcial2.UI.Registro
         {
             InitializeComponent();
         }
+
+        private void Registro_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

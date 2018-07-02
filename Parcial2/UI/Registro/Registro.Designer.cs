@@ -85,6 +85,7 @@
             this.Controls.Add(this.Guardarbutton);
             this.Name = "Registro";
             this.Text = "Registro";
+            this.Load += new System.EventHandler(this.Registro_Load);
             this.ResumeLayout(false);
 
         }
