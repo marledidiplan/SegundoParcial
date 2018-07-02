@@ -50,7 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\VehiculoBLL.cs" />
+    <Compile Include="BLL\VehiculoDetalleBLL.cs" />
     <Compile Include="DALL\Contexto.cs" />
+    <Compile Include="Entidades\Vehiculo.cs" />
+    <Compile Include="Entidades\MantenimientoDetalle.cs" />
     <Compile Include="mPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,10 +106,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-    <Folder Include="Entidades\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Search_48px.png" />
   </ItemGroup>
