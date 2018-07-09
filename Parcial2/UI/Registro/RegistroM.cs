@@ -126,6 +126,7 @@ namespace Parcial2.UI.Registro
                     precio: (float)Convert.ToSingle(PreciomtextBox.Text),
                     importe: (float)Convert.ToSingle(ImporteMtextBox.Text)
                     ));
+
             dataGridView.DataSource = null;
             dataGridView.DataSource = mantenidetalle;
             CalcularValoresArticulos();
@@ -228,19 +229,6 @@ namespace Parcial2.UI.Registro
             }
         }
        
-       /* public void Ctotal()
-        {
-           List<Mantenimiento> manteni = (List<Mantenimiento>)dataGridView.DataSource;
-
-                
-                //BLL.MantenimientoBLL.CalcularTotal(DataGridViewRow item in dataGridView.Rows);
-           
-            foreach (var item in manteni)
-            {
-                TotaltextBox = item
-            }
-
-        }*/
 
         public void CalcularValoresArticulos()
         {

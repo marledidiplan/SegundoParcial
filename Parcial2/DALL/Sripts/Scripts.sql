@@ -1,1 +1,3 @@
-Create database SegundoParcial
+--Create database SegundoParcial
+
+select * from Mantenimientoes

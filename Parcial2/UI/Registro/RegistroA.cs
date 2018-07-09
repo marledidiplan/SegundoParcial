@@ -22,6 +22,7 @@ namespace Parcial2.UI.Registro
         public RegistroA()
         {
             InitializeComponent();
+            InvetextBox.Text = "0";
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -156,6 +157,11 @@ namespace Parcial2.UI.Registro
             float.TryParse(valor.ToString(), out retorno);
 
             return retorno;
+        }
+
+        private void RegistroA_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

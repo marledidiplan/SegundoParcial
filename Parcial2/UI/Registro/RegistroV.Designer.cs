@@ -126,14 +126,15 @@
             // 
             this.DescripciontextBox.Location = new System.Drawing.Point(123, 56);
             this.DescripciontextBox.Name = "DescripciontextBox";
-            this.DescripciontextBox.Size = new System.Drawing.Size(100, 20);
+            this.DescripciontextBox.Size = new System.Drawing.Size(143, 20);
             this.DescripciontextBox.TabIndex = 11;
             // 
             // TotalmtextBox
             // 
             this.TotalmtextBox.Location = new System.Drawing.Point(145, 96);
             this.TotalmtextBox.Name = "TotalmtextBox";
-            this.TotalmtextBox.Size = new System.Drawing.Size(100, 20);
+            this.TotalmtextBox.ReadOnly = true;
+            this.TotalmtextBox.Size = new System.Drawing.Size(121, 20);
             this.TotalmtextBox.TabIndex = 12;
             // 
             // errorProvider

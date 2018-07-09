@@ -19,6 +19,7 @@ namespace Parcial2.UI.Registro
         public RegistroV()
         {
             InitializeComponent();
+            TotalmtextBox.Text = "0";
         }
 
         private void Registro_Load(object sender, EventArgs e)

@@ -225,6 +225,7 @@
             this.Name = "RegistroA";
             this.Text = "Registro Articulo";
             this.TransparencyKey = System.Drawing.Color.White;
+            this.Load += new System.EventHandler(this.RegistroA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.IdnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
