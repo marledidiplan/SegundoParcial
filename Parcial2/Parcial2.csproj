@@ -50,9 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ArticulosBLL.cs" />
+    <Compile Include="BLL\eArticulosBLL.cs" />
+    <Compile Include="BLL\MantenimientoBLL.cs" />
+    <Compile Include="BLL\Repositorio.cs" />
+    <Compile Include="BLL\RepositorioBase.cs" />
+    <Compile Include="BLL\TalleresBLL.cs" />
     <Compile Include="BLL\VehiculoBLL.cs" />
-    <Compile Include="BLL\VehiculoDetalleBLL.cs" />
     <Compile Include="DALL\Contexto.cs" />
+    <Compile Include="Entidades\Articulos.cs" />
+    <Compile Include="Entidades\eArticulos.cs" />
+    <Compile Include="Entidades\Mantenimiento.cs" />
+    <Compile Include="Entidades\Talleres.cs" />
     <Compile Include="Entidades\Vehiculo.cs" />
     <Compile Include="Entidades\MantenimientoDetalle.cs" />
     <Compile Include="mPrincipal.cs">
@@ -63,17 +72,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Consulta\Consulta.cs">
+    <Compile Include="UI\Registro\RegistroM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Consulta\Consulta.Designer.cs">
-      <DependentUpon>Consulta.cs</DependentUpon>
+    <Compile Include="UI\Registro\RegistroM.Designer.cs">
+      <DependentUpon>RegistroM.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Registro\Registro.cs">
+    <Compile Include="UI\Registro\RegistroV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Registro\Registro.Designer.cs">
-      <DependentUpon>Registro.cs</DependentUpon>
+    <Compile Include="UI\Registro\RegistroV.Designer.cs">
+      <DependentUpon>RegistroV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroA.Designer.cs">
+      <DependentUpon>RegistroA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroE.Designer.cs">
+      <DependentUpon>RegistroE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\RegistroT.Designer.cs">
+      <DependentUpon>RegistroT.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="mPrincipal.resx">
       <DependentUpon>mPrincipal.cs</DependentUpon>
@@ -88,11 +115,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Consulta\Consulta.resx">
-      <DependentUpon>Consulta.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Registro\RegistroM.resx">
+      <DependentUpon>RegistroM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Registro\Registro.resx">
-      <DependentUpon>Registro.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Registro\RegistroV.resx">
+      <DependentUpon>RegistroV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistroA.resx">
+      <DependentUpon>RegistroA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistroE.resx">
+      <DependentUpon>RegistroE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\RegistroT.resx">
+      <DependentUpon>RegistroT.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -106,7 +142,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DALL\Sripts\Scripts.sql" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Search_48px.png" />
   </ItemGroup>
@@ -123,7 +161,14 @@
     <None Include="Resources\Print_48px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DALL\Sripts\Scripts.sql" />
+    <None Include="Resources\Search_30px.png" />
+    <None Include="Resources\Close Window_30px.png" />
+    <None Include="Resources\File_30px.png" />
+    <None Include="Resources\Save_30px.png" />
+    <None Include="Resources\Search_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Consulta\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,1 +1,1 @@
-CREATE DATABASE SegundoParcial
+Create database SegundoParcial

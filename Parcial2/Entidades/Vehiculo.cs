@@ -11,16 +11,11 @@ namespace Parcial2.Entidades
         public string Descripcion { get; set; }
         public int Mantenimiento { get; set; }
 
-        public virtual List<MantenimientoDetalle> Detalles { get; set; }
-
         public Vehiculo()
         {
-            this.Detalles = new List<MantenimientoDetalle>();
+            VehiculoId = 0;
+            Descripcion = string.Empty;
+            Mantenimiento = 0;
         }
-        public void AnadirDetalle(int mantenimientoId, string vehiculoss, string taller, string servicio, int cantidad, int precio, int importe, int total)
-        {
-            this.Detalles.Add(new MantenimientoDetalle(mantenimientoId, vehiculoss,  taller, servicio, cantidad, precio, importe, total));
-        }
-
     }
 }

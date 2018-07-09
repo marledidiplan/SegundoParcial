@@ -10,6 +10,10 @@ namespace Parcial2.DALL
     public class Contexto : DbContext
     {
         public DbSet<Vehiculo> vehiculo { get; set; }
+        public DbSet<Talleres> talleres { get; set; }
+        public DbSet<eArticulos> artic { get; set; }
+        public DbSet<Articulos> artiP { get; set; }
+        public DbSet<Mantenimiento> mantenimientos { get; set; }
 
         public Contexto() : base("ConStr")
         {

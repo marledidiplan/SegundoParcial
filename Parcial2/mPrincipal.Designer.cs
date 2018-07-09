@@ -28,13 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEntradaAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rTalleresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rVehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroMantenimietoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.consultaMantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // registroToolStripMenuItem
+            // 
+            this.registroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rArticulosToolStripMenuItem,
+            this.rEntradaAToolStripMenuItem,
+            this.rTalleresToolStripMenuItem,
+            this.rVehiculosToolStripMenuItem,
+            this.registroMantenimietoToolStripMenuItem});
+            this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.registroToolStripMenuItem.Text = "Registro";
+            // 
+            // rArticulosToolStripMenuItem
+            // 
+            this.rArticulosToolStripMenuItem.Name = "rArticulosToolStripMenuItem";
+            this.rArticulosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.rArticulosToolStripMenuItem.Text = "rArticulos";
+            this.rArticulosToolStripMenuItem.Click += new System.EventHandler(this.rArticulosToolStripMenuItem_Click);
+            // 
+            // rEntradaAToolStripMenuItem
+            // 
+            this.rEntradaAToolStripMenuItem.Name = "rEntradaAToolStripMenuItem";
+            this.rEntradaAToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.rEntradaAToolStripMenuItem.Text = "rEntradaA";
+            this.rEntradaAToolStripMenuItem.Click += new System.EventHandler(this.rEntradaAToolStripMenuItem_Click);
+            // 
+            // rTalleresToolStripMenuItem
+            // 
+            this.rTalleresToolStripMenuItem.Name = "rTalleresToolStripMenuItem";
+            this.rTalleresToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.rTalleresToolStripMenuItem.Text = "rTalleres";
+            this.rTalleresToolStripMenuItem.Click += new System.EventHandler(this.rTalleresToolStripMenuItem_Click);
+            // 
+            // rVehiculosToolStripMenuItem
+            // 
+            this.rVehiculosToolStripMenuItem.Name = "rVehiculosToolStripMenuItem";
+            this.rVehiculosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.rVehiculosToolStripMenuItem.Text = "rVehiculos";
+            this.rVehiculosToolStripMenuItem.Click += new System.EventHandler(this.rVehiculosToolStripMenuItem_Click);
+            // 
+            // registroMantenimietoToolStripMenuItem
+            // 
+            this.registroMantenimietoToolStripMenuItem.Name = "registroMantenimietoToolStripMenuItem";
+            this.registroMantenimietoToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.registroMantenimietoToolStripMenuItem.Text = "Registro Mantenimieto";
+            this.registroMantenimietoToolStripMenuItem.Click += new System.EventHandler(this.registroMantenimietoToolStripMenuItem_Click);
+            // 
+            // consultaToolStripMenuItem
+            // 
+            this.consultaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultaMantenimientoToolStripMenuItem});
+            this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
+            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.consultaToolStripMenuItem.Text = "Consulta";
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // menuStrip1
             // 
@@ -49,29 +122,12 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // archivoToolStripMenuItem
+            // consultaMantenimientoToolStripMenuItem
             // 
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // registroToolStripMenuItem
-            // 
-            this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.registroToolStripMenuItem.Text = "Registro";
-            // 
-            // consultaToolStripMenuItem
-            // 
-            this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
-            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.consultaToolStripMenuItem.Text = "Consulta";
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            /*this.consultaMantenimientoToolStripMenuItem.Name = "consultaMantenimientoToolStripMenuItem";
+            this.consultaMantenimientoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.consultaMantenimientoToolStripMenuItem.Text = "Consulta Mantenimiento";
+            this.consultaMantenimientoToolStripMenuItem.Click += new System.EventHandler(this.consultaMantenimientoToolStripMenuItem_Click);*/
             // 
             // mPrincipal
             // 
@@ -82,7 +138,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mPrincipal";
-            this.Text = "mPrincipal";
+            this.Text = "Menu Principal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -92,11 +148,17 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rArticulosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rEntradaAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rTalleresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rVehiculosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroMantenimietoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem consultaMantenimientoToolStripMenuItem;
     }
 }
 

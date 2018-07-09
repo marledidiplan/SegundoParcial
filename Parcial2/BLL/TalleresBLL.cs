@@ -9,99 +9,101 @@ using Parcial2.DALL;
 
 namespace Parcial2.BLL
 {
-    public class VehiculoBLL
+   public class TalleresBLL
     {
-        public static bool Guardar(Vehiculo vehi)
+        public static bool Guardar(Talleres taller)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                if(contexto.vehiculo.Add(vehi) !=null)
+                if (contexto.talleres.Add(taller) != null)
                 {
                     contexto.SaveChanges();
                     paso = true;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
             return paso;
         }
 
-        public static bool Modificar(Vehiculo vehi)
+        public static bool Modificar(Talleres taller)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                contexto.Entry(vehi).State = EntityState.Modified;
-                if(contexto.SaveChanges() > 0)
+                contexto.Entry(taller).State = EntityState.Modified;
+                if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
                 }
-                contexto.Dispose();
-            }
-            catch(Exception)
-            {
-                throw;
-            }
-            return paso;
-
-        }
-        public  static Vehiculo Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
-            Vehiculo vehi= new Vehiculo();
-            
-            try
-            {
-                vehi = contexto.vehiculo.Find(id);
-                contexto.Dispose();
-            }
-            catch(Exception)
-            {
-                throw;
-            }
-            return vehi;
-        }
-        public static bool Eliminar(int id)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            Vehiculo vehi = new Vehiculo();
-            try
-            {
-                vehi = contexto.vehiculo.Find(id);
-                contexto.vehiculo.Remove(vehi);
-                if(contexto.SaveChanges() >0)
-                {
-                    paso = true;
-                }
-            }
-            catch(Exception)
-            {
-                throw;
-            }
-            return paso;
-        }
-        
-         public static List<Vehiculo>  GetList(Expression<Func<Vehiculo, bool>> expression)
-        {
-            Contexto contexto = new Contexto();
-            List<Vehiculo> vehiculos = new List<Vehiculo>();
-
-            try
-            {
-                vehiculos = contexto.vehiculo.Where(expression).ToList();
                 contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            return vehiculos;
+            return paso;
+
+        }
+
+        public static Talleres Buscar(int id)
+        {
+            Contexto contexto = new Contexto();
+            Talleres taller = new Talleres();
+            try
+            {
+                taller = contexto.talleres.Find(id);
+                contexto.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return taller;
+        }
+
+        public static bool Eliminar(int id)
+        {
+
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            Talleres taller = new Talleres();
+            try
+            {
+                taller = contexto.talleres.Find(id);
+                contexto.talleres.Remove(taller);
+                if (contexto.SaveChanges() > 0)
+                {
+                    paso = true;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+
+        public static List<Talleres> GetList(Expression<Func<Talleres, bool>> expression)
+        {
+            Contexto contexto = new Contexto();
+            List<Talleres> taller = new List<Talleres>();
+
+            try
+            {
+                taller = contexto.talleres.Where(expression).ToList();
+                contexto.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return taller;
         }
     }
 }

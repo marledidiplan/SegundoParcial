@@ -8,46 +8,57 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Parcial2.Entidades
 {
-   public class MantenimientoDetalle
+    public class MantenimientoDetalle
     {
         [Key]
+        public int Id { get; set; }
         public int MantenimientoId { get; set; }
         public DateTime Fecha { get; set; }
-        public string Vehiculos { get; set; }
-        public string Taller { get; set; }
-        public string Servicios { get; set; }
-        public int Cantidad { get; set; }
-        public int Precio { get; set; }
-        public int Importe { get; set; }
-        public int Total { get; set; }
+        public int ArticuloId { get; set; }
+        public string Articulo { get; set; }
+        public int TallerId { get; set; }
+        public int VehiculoId { get; set; }
+
+        public int EntradaId { get; set; }
+        public float Cantidad { get; set; }
+        public float Precio { get; set; }
+        public float Importe { get; set; }
+        
 
 
-        [ForeignKey("vehiculoId")]
+        [ForeignKey("VehiculoId")]
         public virtual Vehiculo Vehiculo { get; set; }
+
+        [ForeignKey("ArticuloId")]
+        public virtual Articulos Articulos { get; set; }
+
+        [ForeignKey("TallerId")]
+        public virtual Talleres talllere { get; set; }
 
         public MantenimientoDetalle()
         {
-
+            Id = 0;
             MantenimientoId = 0;
             Fecha = DateTime.Now;
-            Vehiculos = string.Empty;
-            Taller = string.Empty;
-            Servicios = string.Empty;
+            TallerId = 0;
+            ArticuloId = 0;
+            Articulo = string.Empty;
+            EntradaId = 0;
             Cantidad = 0;
             Precio = 0;
-            Importe = 0;
-            Total = 0;
+            
         }
-        public MantenimientoDetalle( int mantenimientoId, string vehiculoss,string taller, string servicio, int cantidad, int precio, int importe, int total)
+        public MantenimientoDetalle( int id,int mantenimientoId, int vehiculoId, int tallerId,  int articuloId , string articulo, float cantidad, float precio, float importe )
         {
+            this.Id = id;
             this.MantenimientoId = mantenimientoId;
-            this.Vehiculos = vehiculoss;
-            this.Taller = taller;
-            this.Servicios = servicio;
+            this.VehiculoId = vehiculoId;
+            this.TallerId = tallerId;
+            this.ArticuloId = articuloId;
+            this.Articulo = articulo;
             this.Cantidad = cantidad;
             this.Precio = precio;
             this.Importe = importe;
-            this.Total = total;
         }
     }
 }
