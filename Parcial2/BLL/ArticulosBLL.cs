@@ -106,7 +106,7 @@ namespace Parcial2.BLL
             return articulos;
         }
 
-        public static float CalcularGanancia(float precio, float costo)
+        public static float CalcularGanancia(float costo, float precio)
         {
             float resultado;
             resultado = precio - costo;
@@ -115,17 +115,7 @@ namespace Parcial2.BLL
             return resultado;
             
         }
-        public static float CalcularP( float ganancia , float costo)
-        {
-
-            return ganancia * costo;
-            
-
-        }
-        public static double CalcularC(float precio, double ganancia)
-        {
-            return precio - ganancia;
-        }
+        
 
     }
 }

@@ -53,10 +53,6 @@
             this.ItbistextBox = new System.Windows.Forms.TextBox();
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
@@ -178,6 +174,7 @@
             // 
             // FechamdateTimePicker
             // 
+            this.FechamdateTimePicker.CustomFormat = "dd/MM/yy";
             this.FechamdateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.FechamdateTimePicker.Location = new System.Drawing.Point(87, 42);
             this.FechamdateTimePicker.Name = "FechamdateTimePicker";
@@ -265,35 +262,10 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Articulo,
-            this.Cantidad,
-            this.Precio,
-            this.Importe});
             this.dataGridView.Location = new System.Drawing.Point(12, 184);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(653, 176);
             this.dataGridView.TabIndex = 23;
-            // 
-            // Articulo
-            // 
-            this.Articulo.HeaderText = "Articulo";
-            this.Articulo.Name = "Articulo";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
             // 
             // Buscarbutton
             // 
@@ -304,6 +276,7 @@
             this.Buscarbutton.TabIndex = 24;
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // Eliminarbutton
             // 
@@ -349,8 +322,9 @@
             // 
             // ProximodateTimePicker
             // 
+            this.ProximodateTimePicker.CustomFormat = "dd/MM/yy";
             this.ProximodateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ProximodateTimePicker.Location = new System.Drawing.Point(353, 36);
+            this.ProximodateTimePicker.Location = new System.Drawing.Point(345, 42);
             this.ProximodateTimePicker.Name = "ProximodateTimePicker";
             this.ProximodateTimePicker.Size = new System.Drawing.Size(112, 20);
             this.ProximodateTimePicker.TabIndex = 29;
@@ -448,10 +422,6 @@
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker ProximodateTimePicker;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.Button Removerbutton;
         private System.Windows.Forms.ErrorProvider errorProvider;
     }

@@ -13,12 +13,11 @@ namespace Parcial2.Entidades
         [Key]
         public int Id { get; set; }
         public int MantenimientoId { get; set; }
-        public DateTime Fecha { get; set; }
+       
         public int ArticuloId { get; set; }
         public string Articulo { get; set; }
         public int TallerId { get; set; }
         public int VehiculoId { get; set; }
-
         public int EntradaId { get; set; }
         public float Cantidad { get; set; }
         public float Precio { get; set; }
@@ -39,7 +38,6 @@ namespace Parcial2.Entidades
         {
             Id = 0;
             MantenimientoId = 0;
-            Fecha = DateTime.Now;
             TallerId = 0;
             ArticuloId = 0;
             Articulo = string.Empty;

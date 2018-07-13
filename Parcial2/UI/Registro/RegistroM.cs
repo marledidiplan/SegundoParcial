@@ -23,12 +23,11 @@ namespace Parcial2.UI.Registro
         {
             InitializeComponent();
             LlenarComboBox();
+            ProximodateTimePicker.Value = ProximodateTimePicker.Value.AddMonths(3);
         }
 
         private void ProximodateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-
-
         }
 
         private void Guardarbutton_Click(object sender, EventArgs e)
@@ -62,6 +61,7 @@ namespace Parcial2.UI.Registro
         {
             IdmnumericUpDown.Value = manteni.IdMantenimiento;
             FechamdateTimePicker.Value = manteni.Fecha;
+            ProximodateTimePicker.Value = manteni.FechaProxima;
             ItbistextBox.Text = manteni.Itbis.ToString();
             SttextBox.Text = manteni.SubTotal.ToString();
             TotaltextBox.Text = manteni.Total.ToString();
@@ -129,7 +129,7 @@ namespace Parcial2.UI.Registro
 
             dataGridView.DataSource = null;
             dataGridView.DataSource = mantenidetalle;
-            CalcularValoresArticulos();
+            CalcularValoresArticulos(mantenidetalle);
 
         }
        
@@ -138,12 +138,14 @@ namespace Parcial2.UI.Registro
         {
             if(dataGridView.Rows.Count > 0 && dataGridView.CurrentRow != null)
             {
-                List<MantenimientoDetalle> manteniDetalle = new List<MantenimientoDetalle>();
+                List<MantenimientoDetalle> manteniDetalle = (List<MantenimientoDetalle>)dataGridView.DataSource;
                 manteniDetalle.RemoveAt(dataGridView.CurrentRow.Index);
+
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = manteniDetalle;
-
+                CalcularDisminucionValoresArticulos(manteniDetalle);
             }
+
         }
 
         private void LlenarComboBox()
@@ -172,7 +174,10 @@ namespace Parcial2.UI.Registro
 
             manteni.IdMantenimiento = Convert.ToInt32(IdmnumericUpDown.Value);
             manteni.Fecha = FechamdateTimePicker.Value;
-
+            manteni.FechaProxima = ProximodateTimePicker.Value;
+            manteni.SubTotal = Convert.ToDouble(SttextBox.Text);
+            manteni.Itbis = Convert.ToDouble(ItbistextBox.Text);
+            manteni.Total = Convert.ToDouble(TotaltextBox.Text);
 
             foreach (DataGridViewRow item in dataGridView.Rows)
             {
@@ -188,9 +193,6 @@ namespace Parcial2.UI.Registro
                      ToInt(item.Cells["cantidad"].Value),
                      ToInt(item.Cells["precio"].Value),
                     ToInt(item.Cells["importe"].Value)
-
-
-
                   );
             }
 
@@ -209,8 +211,20 @@ namespace Parcial2.UI.Registro
         private void CantidadmtextBox_TextChanged(object sender, EventArgs e)
         {
             precio();
-            ImporteMtextBox.Text = MantenimientoBLL.CalcularImporte(Convert.ToInt32(CantidadmtextBox.Text), Convert.ToInt32(PreciomtextBox.Text)).ToString();
+            Importe();
 
+        }
+
+        private void Importe()
+        {
+            double salidaCantidad = 0;
+            double salidaPrecio = 0;
+            double.TryParse(CantidadmtextBox.Text, out salidaCantidad);
+            double cantidad = Convert.ToDouble(salidaCantidad);
+            double.TryParse(PreciomtextBox.Text, out salidaPrecio);
+            double precio = Convert.ToDouble(salidaPrecio);
+
+            ImporteMtextBox.Text = MantenimientoBLL.CalcularImporte(cantidad, precio).ToString();
         }
 
         private void ArticuloMcomboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,15 +242,14 @@ namespace Parcial2.UI.Registro
 
             }
         }
-       
 
-        public void CalcularValoresArticulos()
+
+        public void CalcularValoresArticulos(IList<MantenimientoDetalle> mantenimientoDetalle)
         {
-            Mantenimiento manteni = new Mantenimiento();
             double subTotal=0;
-            foreach (var item in manteni.Detalles)
+            foreach (var item in mantenimientoDetalle)
             {
-                subTotal = item.Importe;
+                subTotal += item.Importe;
             }
             SttextBox.Text = subTotal.ToString();
             double itbis= subTotal * 0.18;
@@ -245,10 +258,29 @@ namespace Parcial2.UI.Registro
             
             double total = subTotal + itbis;
             TotaltextBox.Text = total.ToString();
-            dataGridView.DataSource = manteni.Detalles;
+            dataGridView.DataSource = mantenimientoDetalle;
 
            
         }
+        public void CalcularDisminucionValoresArticulos(IList<MantenimientoDetalle> mantenimientoDetalle)
+        {
+            double subTotal = 0;
+            foreach (var item in mantenimientoDetalle)
+            {
+                subTotal -= item.Importe;
+            }
+            SttextBox.Text = subTotal.ToString();
+            double itbis = subTotal * 0.18;
+            ItbistextBox.Text = itbis.ToString();
+
+
+            double total = subTotal - itbis;
+            TotaltextBox.Text = total.ToString();
+            dataGridView.DataSource = mantenimientoDetalle;
+
+
+        }
+
 
         private void Nuevobutton_Click(object sender, EventArgs e)
         {
@@ -267,6 +299,7 @@ namespace Parcial2.UI.Registro
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
+
             int id = Convert.ToInt32(IdmnumericUpDown.Value);
             Mantenimiento manteni = new Mantenimiento();
 
@@ -275,6 +308,24 @@ namespace Parcial2.UI.Registro
             else
                 MessageBox.Show("No se puede eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void Buscarbutton_Click(object sender, EventArgs e)
+        {
+
+            int id = Convert.ToInt32(IdmnumericUpDown.Value);
+            Mantenimiento mantenimiento = BLL.MantenimientoBLL.Buscar(id);
+
+            if(mantenimiento !=null)
+            {
+                FechamdateTimePicker.Value = mantenimiento.Fecha;
+                ProximodateTimePicker.Value = mantenimiento.FechaProxima;
+                SttextBox.Text = mantenimiento.SubTotal.ToString();
+                ItbistextBox.Text = mantenimiento.Itbis.ToString();
+                TotaltextBox.Text = mantenimiento.Total.ToString();
+
+
+            }
         }
     }
 }

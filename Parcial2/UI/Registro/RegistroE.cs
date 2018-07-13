@@ -49,7 +49,7 @@ namespace Parcial2.UI.Registro
                     MessageBox.Show("Guardado", "Con Exito!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("No se pudo Guardar", "Error!!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Linventario();
+            //Linventario();
         }
 
         private void Nuevobutton_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Parcial2.UI.Registro
             eArticulos articulo = new eArticulos();
             articulo.EntradaId = Convert.ToInt32(IdenumericUpDown.Value);
             articulo.Fecha = FechadateTimePicker.Value;
-            articulo.Articulo = ArticomboBox.Text;
+            articulo.ArticuloId = Convert.ToInt32(ArticomboBox.SelectedValue);
             articulo.Cantidad = Convert.ToInt32(CantidadtextBox.Text);
 
             return articulo;
@@ -74,22 +74,26 @@ namespace Parcial2.UI.Registro
         public bool Validar()
         {
             bool Errores = false;
-            if(String.IsNullOrWhiteSpace(ArticomboBox.Text))
+            if(String.IsNullOrWhiteSpace(CantidadtextBox.Text))
             {
-                errorProvider.SetError(ArticomboBox, "No debes dejar el Articulo vacio");
+                errorProvider.SetError(CantidadtextBox, "No debes dejar la Cantidad vacia");
                     Errores = false;
             }
             return Errores;
         }
+
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(IdenumericUpDown.Value);
 
             if (BLL.eArticulosBLL.Eliminar(id))
+
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("No se puede eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else
+            //    MessageBox.Show("No existe", "Operacion Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
         }
@@ -98,13 +102,14 @@ namespace Parcial2.UI.Registro
         {
             int id = Convert.ToInt32(IdenumericUpDown.Value);
             eArticulos articulo = eArticulosBLL.Buscar(id);
-            if (articulo !=null)
+            if (articulo != null)
             {
-                ArticomboBox.Text = articulo.Articulo;
+                ArticomboBox.Text = articulo.ArticuloId.ToString();
                 FechadateTimePicker.Value = articulo.Fecha;
                 CantidadtextBox.Text = articulo.Cantidad.ToString();
             }
-
+            else
+                MessageBox.Show("No hay Ningun Dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void LlenaComBobox()
@@ -115,17 +120,17 @@ namespace Parcial2.UI.Registro
             ArticomboBox.ValueMember = "ArticuloId";
             ArticomboBox.DisplayMember = "Descripcion";
         }
-        public void Linventario()
+       /* public void Linventario()
         {
             eArticulos artiEntrada = new eArticulos();
             artiEntrada = LlenaClase();
-            foreach (var item in ArticulosBLL.GetList(m=> m.Descripcion == artiEntrada.Articulo ))
+            foreach (var item in ArticulosBLL.GetList(m=> m.Descripcion == artiEntrada.ArticuloId ))
             {
                 item.Inventario += artiEntrada.Cantidad;
                 ArticulosBLL.Modificar(item);
 
             }
-        }
+        }*/
 
         private void CantidadtextBox_TextChanged(object sender, EventArgs e)
         {

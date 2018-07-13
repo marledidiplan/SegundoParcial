@@ -63,7 +63,7 @@ namespace Parcial2.UI.Registro
             Vehiculo vehi = new Vehiculo();
             vehi.VehiculoId = Convert.ToInt32(IdvnumericUpDown.Value);
             vehi.Descripcion = DescripciontextBox.Text;
-            vehi.Mantenimiento = Convert.ToInt32(TotalmtextBox.Text);
+           //  vehi.Mantenimiento = Convert.ToInt32(TotalmtextBox.Text);
 
             return vehi;
         }

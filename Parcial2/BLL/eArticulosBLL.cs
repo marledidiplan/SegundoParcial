@@ -12,14 +12,18 @@ namespace Parcial2.BLL
 {
     public class eArticulosBLL
     {
-        public static bool Guardar(eArticulos articulo)
+        public static bool Guardar(eArticulos articuloEntrada)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                if (contexto.artic.Add(articulo) != null)
+                if (contexto.artic.Add(articuloEntrada) != null)
                 {
+                    
+                    Articulos articulos = ArticulosBLL.Buscar(articuloEntrada.ArticuloId);
+                    articulos.Inventario += articuloEntrada.Cantidad;
+                    BLL.ArticulosBLL.Modificar(articulos);
                     contexto.SaveChanges();
                     paso = true;
                 }
@@ -31,13 +35,22 @@ namespace Parcial2.BLL
             return paso;
         }
 
-        public static bool Modificar(eArticulos articulo)
+        public static bool Modificar(eArticulos articuloEntrada)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                contexto.Entry(articulo).State = EntityState.Modified;
+
+                eArticulos articuloEn = eArticulosBLL.Buscar(articuloEntrada.EntradaId);
+                int desigualdal = articuloEntrada.Cantidad - articuloEn.Cantidad;
+                Articulos articulos = ArticulosBLL.Buscar(articuloEntrada.ArticuloId);
+                articulos.Inventario += desigualdal;
+                ArticulosBLL.Modificar(articulos);
+
+
+
+                contexto.Entry(articuloEntrada).State = EntityState.Modified;
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
@@ -73,11 +86,14 @@ namespace Parcial2.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            eArticulos articulo = new eArticulos();
+           
             try
-            {
-                articulo = contexto.artic.Find(id);
-                contexto.artic.Remove(articulo);
+            { 
+                 eArticulos articuloEntrada = new eArticulos();
+                articuloEntrada = contexto.artic.Find(id);
+                Articulos articulos = ArticulosBLL.Buscar(articuloEntrada.ArticuloId);
+                ArticulosBLL.Modificar(articulos);
+                
                 if (contexto.SaveChanges() > 0)
                 {
                     paso = true;
@@ -93,18 +109,18 @@ namespace Parcial2.BLL
         public static List<eArticulos> GetList(Expression<Func<eArticulos, bool>> expression)
         {
             Contexto contexto = new Contexto();
-            List<eArticulos> articulo = new List<eArticulos>();
+            List<eArticulos> articuloEntrada  = new List<eArticulos>();
 
             try
             {
-                articulo = contexto.artic.Where(expression).ToList();
+                articuloEntrada = contexto.artic.Where(expression).ToList();
                 contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            return articulo;
+            return articuloEntrada;
         }
     }
 }

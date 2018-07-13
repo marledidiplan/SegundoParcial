@@ -12,6 +12,7 @@ namespace Parcial2.Entidades
         [Key]
         public int IdMantenimiento { get; set; }
         public DateTime Fecha { get; set; }
+        public DateTime FechaProxima { get; set; }
         public double Total { get; set; }
         public double SubTotal { get; set; }
         public double Itbis { get; set; }

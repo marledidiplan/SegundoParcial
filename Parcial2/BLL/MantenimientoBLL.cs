@@ -106,7 +106,7 @@ namespace Parcial2.BLL
             }
             return manteni;
         }
-        public static float CalcularImporte(float cantidad, float precio)
+        public static double CalcularImporte(double cantidad, double precio)
         {
             return precio * cantidad;
         }
