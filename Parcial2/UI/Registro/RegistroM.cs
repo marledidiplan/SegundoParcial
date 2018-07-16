@@ -122,7 +122,7 @@ namespace Parcial2.UI.Registro
                     tallerId: (int)TallermcomboBox.SelectedValue,
                     articuloId: (int)ArticuloMcomboBox.SelectedValue,
                     articulo: ArticuloMcomboBox.Text,
-                   cantidad: (float)Convert.ToSingle(CantidadmtextBox.Text),
+                   cantidad: (int)Convert.ToInt32(CantidadmtextBox.Text),
                     precio: (float)Convert.ToSingle(PreciomtextBox.Text),
                     importe: (float)Convert.ToSingle(ImporteMtextBox.Text)
                     ));

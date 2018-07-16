@@ -46,7 +46,7 @@ namespace Parcial2.Entidades
             Precio = 0;
             
         }
-        public MantenimientoDetalle( int id,int mantenimientoId, int vehiculoId, int tallerId,  int articuloId , string articulo, float cantidad, float precio, float importe )
+        public MantenimientoDetalle( int id,int mantenimientoId, int vehiculoId, int tallerId,  int articuloId , string articulo, int cantidad, float precio, float importe )
         {
             this.Id = id;
             this.MantenimientoId = mantenimientoId;

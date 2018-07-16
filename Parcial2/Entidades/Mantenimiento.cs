@@ -24,7 +24,7 @@ namespace Parcial2.Entidades
         {
             this.Detalles = new List<MantenimientoDetalle>();
         }
-        public void AnadirDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articuloId, string articulo, float cantidad, float precio, float importe)
+        public void AnadirDetalle(int id, int mantenimientoId, int vehiculoId, int tallerId, int articuloId, string articulo, int cantidad, float precio, float importe)
         {
             this.Detalles.Add(new MantenimientoDetalle(id,mantenimientoId, vehiculoId, tallerId, articuloId, articulo, cantidad, precio, importe));
 
