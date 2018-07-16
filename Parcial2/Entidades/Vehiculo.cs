@@ -9,7 +9,7 @@ namespace Parcial2.Entidades
     {
         public int VehiculoId { get; set; }
         public string Descripcion { get; set; }
-        public int Mantenimiento { get; set; }
+        public double Mantenimiento { get; set; }
 
         public Vehiculo()
         {

@@ -20,6 +20,17 @@ namespace Parcial2.BLL
             {
                 if (contexto.mantenimientos.Add(manteni) != null)
                 {
+                    foreach (var item in manteni.Detalles)
+                    {
+                        contexto.vehiculo.Find(item.Vehiculo).Mantenimiento += manteni.Total;
+
+                    }
+                    foreach (var item in manteni.Detalles)
+                    {
+                        contexto.artiP.Find(item.ArticuloId).Inventario -= item.Cantidad;
+
+
+                    }
                     contexto.SaveChanges();
                     paso = true;
                 }
@@ -37,6 +48,32 @@ namespace Parcial2.BLL
             Contexto contexto = new Contexto();
             try
             {
+
+                var mantenimiento = BLL.MantenimientoBLL.Buscar(manteni.IdMantenimiento);
+                Mantenimiento mantenimientoss = BLL.MantenimientoBLL.Buscar(manteni.IdMantenimiento);
+                double desigualdal = manteni.Total - mantenimientoss.Total;
+                Vehiculo vehiculo = VehiculoBLL.Buscar(manteni.IdVehiculo);
+                VehiculoBLL.Modificar(vehiculo);
+
+
+
+                foreach (var item in manteni.Detalles)
+                {
+                    contexto.artiP.Find(item.ArticuloId).Inventario -= item.Cantidad;
+                    if(!manteni.Detalles.ToList().Exists(ma => ma.Id == item.Id))
+                    {
+                        item.Articulo = null;
+                        contexto.Entry(item).State = EntityState.Deleted;
+                    }
+                }
+                foreach (var item in manteni.Detalles)
+                {
+                    contexto.artiP.Find(item.ArticuloId).Inventario += item.Cantidad;
+                    var m = item.Id > 0 ? EntityState.Modified : EntityState.Added;
+                }
+
+
+
                 contexto.Entry(manteni).State = EntityState.Modified;
                 if (contexto.SaveChanges() > 0)
                 {
@@ -77,6 +114,17 @@ namespace Parcial2.BLL
             try
             {
                 manteni = contexto.mantenimientos.Find(id);
+                foreach (var item in manteni.Detalles)
+                {
+                    contexto.vehiculo.Find(item.Vehiculo).Mantenimiento -= manteni.Total;
+
+                }
+                foreach (var item in manteni.Detalles)
+                {
+                    contexto.artiP.Find(item.ArticuloId).Inventario += item.Cantidad;
+
+
+                }
                 contexto.mantenimientos.Remove(manteni);
                 if (contexto.SaveChanges() > 0)
                 {

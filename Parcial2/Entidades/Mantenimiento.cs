@@ -11,6 +11,7 @@ namespace Parcial2.Entidades
     {
         [Key]
         public int IdMantenimiento { get; set; }
+        public int IdVehiculo { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime FechaProxima { get; set; }
         public double Total { get; set; }

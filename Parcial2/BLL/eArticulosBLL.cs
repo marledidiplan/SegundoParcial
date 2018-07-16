@@ -92,6 +92,7 @@ namespace Parcial2.BLL
                  eArticulos articuloEntrada = new eArticulos();
                 articuloEntrada = contexto.artic.Find(id);
                 Articulos articulos = ArticulosBLL.Buscar(articuloEntrada.ArticuloId);
+                articulos.Inventario -= articuloEntrada.Cantidad;
                 ArticulosBLL.Modificar(articulos);
                 
                 if (contexto.SaveChanges() > 0)

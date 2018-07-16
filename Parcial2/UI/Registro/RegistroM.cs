@@ -220,7 +220,7 @@ namespace Parcial2.UI.Registro
             double salidaCantidad = 0;
             double salidaPrecio = 0;
             double.TryParse(CantidadmtextBox.Text, out salidaCantidad);
-            double cantidad = Convert.ToDouble(salidaCantidad);
+            double cantidad = Convert.ToInt32(salidaCantidad);
             double.TryParse(PreciomtextBox.Text, out salidaPrecio);
             double precio = Convert.ToDouble(salidaPrecio);
 

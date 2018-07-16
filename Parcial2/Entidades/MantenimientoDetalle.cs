@@ -19,7 +19,7 @@ namespace Parcial2.Entidades
         public int TallerId { get; set; }
         public int VehiculoId { get; set; }
         public int EntradaId { get; set; }
-        public float Cantidad { get; set; }
+        public int Cantidad { get; set; }
         public float Precio { get; set; }
         public float Importe { get; set; }
         
